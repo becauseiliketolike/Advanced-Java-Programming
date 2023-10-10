@@ -6,6 +6,7 @@ class OddThread implements Runnable {
             if (i%2 != 0) {
                 System.out.println("Odd");
             }
+            Thread.sleep(2000);
         }
     }
 }
@@ -15,6 +16,7 @@ class EvenThread implements Runnable {
             if (i%2 == 0) {
                 System.out.println("Even");
             }
+            Thread.sleep(2000);
         }
     }
 }
@@ -23,13 +25,9 @@ public class Q3 {
     public static void main(String[] args) {
         OddThread oddThread = new OddThread();
         EvenThread evenThread = new EvenThread();
-        for(int i=0; i<2; i++) {
-            Thread thread1 = new Thread(oddThread);
-            Thread thread2 = new Thread(evenThread);
-            thread1.start();
-            Thread.sleep(2000);
-            thread2.start();
-            Thread.sleep(2000);
-        }
+        Thread thread1 = new Thread(oddThread);
+        Thread thread2 = new Thread(evenThread);
+        thread1.start();
+        thread2.start();
     }
 }
