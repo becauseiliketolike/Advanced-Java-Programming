@@ -1,6 +1,6 @@
 // Q.3 Create two thread to display odd and even numbers between 1 and 100. Each numbers should be displayed in span of 2 seconds.
 
-class OddThread implements Runnable {
+class OddThread extends Thread {
     public void run() {
         try{
             for(int i=1; i<101; i++) {
@@ -15,7 +15,7 @@ class OddThread implements Runnable {
     }
 }
 
-class EvenThread implements Runnable {
+class EvenThread extends Thread {
     public void run() {
         try{
             for(int i=1; i<101; i++) {
@@ -30,12 +30,10 @@ class EvenThread implements Runnable {
     }
 }
 
-public class Q3 {
+public class Q3withExtend {
     public static void main(String[] args) {
-        OddThread oddThread = new OddThread();
-        EvenThread evenThread = new EvenThread();
-        Thread thread1 = new Thread(oddThread);
-        Thread thread2 = new Thread(evenThread);
+        Thread thread1 = new Thread(new OddThread());
+        Thread thread2 = new Thread(new EvenThread());
         thread1.start();
         thread2.start();
     }
