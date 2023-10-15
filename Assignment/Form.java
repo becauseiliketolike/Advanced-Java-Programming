@@ -40,7 +40,7 @@ public class Form {
         statusButtonGroup.add(singleJCheckBox);
 
         // Grid Layout
-        
+        JPanel panel1 = 
         
         // jFrame.add();
         jFrame.setVisible(true);
