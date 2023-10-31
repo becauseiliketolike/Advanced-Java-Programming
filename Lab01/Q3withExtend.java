@@ -32,9 +32,9 @@ class EvenThread extends Thread {
 
 public class Q3withExtend {
     public static void main(String[] args) {
-        Thread thread1 = new Thread(new OddThread());
-        Thread thread2 = new Thread(new EvenThread());
-        thread1.start();
-        thread2.start();
+        OddThread odd = new OddThread();
+        EvenThread even = new EvenThread();
+        odd.start();
+        even.start();
     }
 }
