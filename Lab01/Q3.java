@@ -2,30 +2,26 @@
 
 class OddThread implements Runnable {
     public void run() {
-        try{
-            for(int i=1; i<101; i++) {
-                if (i%2 != 0) {
-                    System.out.println("Odd Thread: " + i);
-                    Thread.sleep(2000);
-                }
+        for (int i = 1; i < 100; i += 2) {
+            System.out.println(i);
+            try {
+                Thread.sleep(2000);
+            } catch (Exception e) {
+                System.out.println(e);
             }
-        } catch (Exception e) {
-            System.out.println(e);
         }
     }
 }
 
 class EvenThread implements Runnable {
     public void run() {
-        try{
-            for(int i=1; i<101; i++) {
-                if(i%2 == 0) {
-                    System.out.println("Even Thread: " + i);
-                    Thread.sleep(2000);
-                }
+        for (int i = 2; i <= 100; i += 2) {
+            System.out.println(i);
+            try {
+                Thread.sleep(2000);
+            } catch (Exception e) {
+                System.out.println(e);
             }
-        } catch (Exception e) {
-            System.out.println(e);
         }
     }
 }
