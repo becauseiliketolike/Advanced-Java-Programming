@@ -1,7 +1,7 @@
 // Q.1 Create a class Student that has three properties id, name and address. Ask user to input those data from the console, initialize the object and print the details as:
 
-// Name: Norden
-// Address: Boudha
+// Name: NGT God
+// Address: Universe
 // Id: 001
 
 import java.util.Scanner;
