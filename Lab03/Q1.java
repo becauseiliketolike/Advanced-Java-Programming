@@ -1,0 +1,1 @@
+// Write a program to take a line as input. Check if the words are palindrome. If yes write to file "palindrome.txt" otherwise write to file "NotPalindrome.txt".
