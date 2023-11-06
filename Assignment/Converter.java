@@ -6,7 +6,6 @@ public class Converter implements ActionListener {
     JFrame myFrame;
     JButton btn;
     JTextField word, result;
-    
 
     Converter() {
         myFrame = new JFrame("Converter");
