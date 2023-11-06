@@ -8,7 +8,7 @@ public class Q2 {
         try {
             FileWriter fw = new FileWriter("Mydata.txt");
             Scanner sc = new Scanner(System.in);
-            System.out.print("Enter you text: ");
+            System.out.print("Enter your text: ");
             String text = sc.nextLine();
             fw.write(text);
             fw.close();
