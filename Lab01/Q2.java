@@ -1,4 +1,5 @@
-// Q.2 Create three class Animal, Cat, Dog and illustrate the runtime polymorphism.
+// Q.2 Create three class Animal, Cat, Dog and illustrate the runtime polymorphism or dynamic method dispatch.
+
 class Animal {
     public String name;
     public Animal(String name) {

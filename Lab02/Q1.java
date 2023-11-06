@@ -2,7 +2,7 @@
 
 // Name: Norden
 // Address: Boudha
-// id: 001
+// Id: 001
 
 import java.util.Scanner;
 
@@ -26,7 +26,7 @@ class Student {
 public class Q1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter ID: ");
+        System.out.print("Enter Id: ");
         String id = sc.nextLine();
         System.out.print("Enter name: ");
         String name = sc.nextLine();
