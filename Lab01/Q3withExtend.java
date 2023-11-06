@@ -6,8 +6,8 @@ class OddThread extends Thread {
             for(int i=1; i<101; i++) {
                 if (i%2 != 0) {
                     System.out.println("Odd Thread: " + i);
+                    Thread.sleep(2000);
                 }
-                Thread.sleep(2000);
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -21,8 +21,8 @@ class EvenThread extends Thread {
             for(int i=1; i<101; i++) {
                 if(i%2 == 0) {
                     System.out.println("Even Thread: " + i);
+                    Thread.sleep(2000);
                 }
-                Thread.sleep(2000);
             }
         } catch (Exception e) {
             System.out.println(e);
