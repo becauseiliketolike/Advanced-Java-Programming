@@ -19,7 +19,7 @@ class Word {
     public void Write(String filename) {
         try {
             FileWriter fw = new FileWriter(filename);
-            fw.write(text);
+            fw.write(this.text);
             fw.close();
         } catch (Exception e) {
             System.out.print(e);
@@ -27,7 +27,7 @@ class Word {
     }
 }
 
-public class Main {
+public class Q1 {
     public static void main(String[] args) {
         Word word = new Word();
         word.Get();
