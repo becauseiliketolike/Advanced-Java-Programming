@@ -5,17 +5,26 @@ import java.util.Scanner;
 
 class Word {
     public String text;
+    
     public void Get() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter text: ");
         text = sc.nextLine().toLowerCase();
+        String[] texts = this.text.split(" ");
     }
-    public boolean Check() {
+
+    public String reverse(String text) {
         String revText = "";
         for (int i=0; i < this.text.length(); i++)
             revText = this.text.charAt(i) + revText;
+        return revText;
+    }
+
+    public boolean Check() {
+
         return text.equals(revText);
     }
+    
     public void Write(String filename) {
         try {
             FileWriter fw = new FileWriter(filename);
