@@ -6,12 +6,12 @@ import java.io.*;
 import java.util.Scanner;
 
 class Word {
-    public String text;
+    public String[] text;
 
     public void Get() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter text: ");
-        text = sc.nextLine().toLowerCase();
+        text = sc.nextLine().toLowerCase().split(" ");
     }
 
     public boolean Check(String t) {
@@ -36,8 +36,7 @@ public class Q1 {
     public static void main(String[] args) {
         Word word = new Word();
         word.Get();
-        String[] texts = word.text.split(" ");
-        for (String t : texts) {
+        for (String t : word.text) {
             if(word.Check(t))
                 word.Write("Palindrome.txt", t);
             else
