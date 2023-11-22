@@ -5,30 +5,24 @@ import java.util.Scanner;
 
 class Word {
     public String text;
-    
+
     public void Get() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter text: ");
         text = sc.nextLine().toLowerCase();
-        String[] texts = this.text.split(" ");
     }
 
-    public String reverse(String text) {
+    public boolean Check(String t) {
         String revText = "";
-        for (int i=0; i < this.text.length(); i++)
-            revText = this.text.charAt(i) + revText;
-        return revText;
+        for (int i=0; i < t.length(); i++)
+            revText = t.charAt(i) + revText;
+        return t.equals(revText);
     }
 
-    public boolean Check() {
-
-        return text.equals(revText);
-    }
-    
-    public void Write(String filename) {
+    public void Write(String filename, String t) {
         try {
-            FileWriter fw = new FileWriter(filename);
-            fw.write(this.text);
+            FileWriter fw = new FileWriter(filename, true);
+            fw.write(t + " ");
             fw.close();
         } catch (Exception e) {
             System.out.print(e);
@@ -40,9 +34,12 @@ public class Q1 {
     public static void main(String[] args) {
         Word word = new Word();
         word.Get();
-        if(word.Check()) 
-            word.Write("Palindrome.txt");
-        else
-            word.Write("NotPalindrome.txt");
+        String[] texts = word.text.split(" ");
+        for (String t : texts) {
+            if(word.Check(t))
+                word.Write("Palindrome.txt", t);
+            else
+                word.Write("NotPalindrome.txt", t);
+        }
     }
 }
