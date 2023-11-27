@@ -1,0 +1,1 @@
+// Q.3 Write a program to create a class Student having attribute id, name, grade. Take input of three users from console. Write those details to file. Now, read all the user detail from file, sort the users and display the detail in console in sorted way.
