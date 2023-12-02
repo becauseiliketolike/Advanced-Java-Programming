@@ -19,11 +19,18 @@ class Student implements Serializable {
 }
 
 public class Q3 {
-    public static void InputData(List<Student> studentList) {
+    public static void InputData() {
         try {
             FileOutputStream fileOut = new FileOutputStream("Student.txt");
             ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
-            objOut.writeObject(studentList);
+            Scanner sc = new Scanner(System.in);
+            for(int i=0; i<3; i++) {
+                System.out.print("Enter ID, Name and Grade for student " + (i+1) + ": ");
+                int id = sc.nextInt();
+                String name = sc.next();
+                String grade = sc.next();
+                objOut.writeObject(new Student(id, name, grade));
+            }
             objOut.close();
         } catch (Exception e) {
             System.out.println(e);
@@ -31,40 +38,26 @@ public class Q3 {
     }
     
     public static List<Student> GetData() {
-        List<Student> studentList = new ArrayList<Student>();  
+        List<Student> studentList = new ArrayList<Student>();
         try {
             FileInputStream fileIn = new FileInputStream("Student.txt");
             ObjectInputStream objIn = new ObjectInputStream(fileIn);
-            studentList = (List<Student>)objIn.readObject();
-            objIn.close();
+            while (true) 
+                studentList.add((Student)objIn.readObject());
         } catch (Exception e) {
             System.out.println(e);
         } 
         return studentList;
     }
-
-    public static void Display(List<Student> studentList, String msg) {
+    
+    public static void main(String[] args) {
+        InputData();
+        List<Student> studentList = GetData();
+        Collections.sort(studentList, Comparator.comparing(student -> student.id));
         System.out.println("---------------------");
-        System.out.println(msg + " Student List");
+        System.out.println("Sorted Student List");
         System.out.println("---------------------");
         for(Student student: studentList)
             student.Display();
-    }
-    
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        List<Student> initialList = new ArrayList<Student>();  
-        for(int i=0; i<3; i++) {
-            System.out.print("Enter ID, Name and Grade for student " + (i+1) + ": ");
-            int id = sc.nextInt();
-            String name = sc.next();
-            String grade = sc.next();
-            initialList.add(new Student(id, name, grade));
-        }
-        InputData(initialList);
-        List<Student> finalList = GetData();
-        Collections.sort(finalList, Comparator.comparingInt(student -> student.id));
-        Display(initialList, "Unsorted");
-        Display(finalList, "Sorted");
     }
 }
