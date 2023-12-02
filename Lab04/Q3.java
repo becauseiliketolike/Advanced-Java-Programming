@@ -32,6 +32,7 @@ public class Q3 {
                 objOut.writeObject(new Student(id, name, grade));
             }
             objOut.close();
+            sc.close();
         } catch (Exception e) {
             System.out.println(e);
         }
