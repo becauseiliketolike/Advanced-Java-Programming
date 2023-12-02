@@ -42,8 +42,8 @@ public class Q3 {
         try {
             FileInputStream fileIn = new FileInputStream("Student.txt");
             ObjectInputStream objIn = new ObjectInputStream(fileIn);
-            while (true) 
-                studentList.add((Student)objIn.readObject());
+            while (fileIn.available() > 0) studentList.add((Student)objIn.readObject());
+            objIn.close();
         } catch (Exception e) {
             System.out.println(e);
         } 
