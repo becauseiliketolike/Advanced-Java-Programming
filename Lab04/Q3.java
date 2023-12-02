@@ -21,9 +21,9 @@ class Student implements Serializable {
 public class Q3 {
     public static void InputData() {
         try {
+            Scanner sc = new Scanner(System.in);
             FileOutputStream fileOut = new FileOutputStream("Student.txt");
             ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
-            Scanner sc = new Scanner(System.in);
             for(int i=0; i<3; i++) {
                 System.out.print("Enter ID, Name and Grade for student " + (i+1) + ": ");
                 int id = sc.nextInt();
