@@ -1,4 +1,5 @@
-// Q.1 Write a program to show the use of throws and finally keyword. Write a program in such a way that the statement in the finally block will not be executed.
+// Q.1 Write a program to show the use of throws and finally keyword. 
+// Write a program in such a way that the statement in the finally block will not be executed.
 
 class AgeException extends Exception {
     public AgeException(String error) {

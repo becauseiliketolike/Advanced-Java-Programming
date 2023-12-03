@@ -1,4 +1,5 @@
-// Q.3 Create two thread to display odd and even numbers between 1 and 100. Each numbers should be displayed in span of 2 seconds.
+// Q.3 Create two thread to display odd and even numbers between 1 and 100. 
+// Each numbers should be displayed in span of 2 seconds.
 
 class OddThread implements Runnable {
     public void run() {

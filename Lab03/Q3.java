@@ -1,4 +1,5 @@
-// Q.3 Create a custom exception UnAuthorizedException. Write a program to take role as user input and throw the exception if the input user role is not Employee.
+// Q.3 Create a custom exception UnAuthorizedException. Write a program to take role as 
+// user input and throw the exception if the input user role is not Employee.
 
 import java.io.*;
 import java.util.Scanner;

@@ -1,4 +1,5 @@
-// Q.2 Write a program in which two threads A, B will share same resource from the class Resource. Make sure that the resource are shared without exception.
+// Q.2 Write a program in which two threads A, B will share same resource from the class Resource. 
+// Make sure that the resource are shared without exception.
 
 class Resource {
     public int x = 0;
