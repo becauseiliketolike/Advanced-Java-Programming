@@ -11,9 +11,7 @@ class Notepad {
         JMenu edit = new JMenu("Edit");
         JMenu view = new JMenu("View");
 
-        JTextArea textArea = new JTextArea();
-        JScrollPane scrollPane = new JScrollPane(textArea);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        
         
         file.add(new JMenuItem("New"));
         file.add(new JMenuItem("Open"));
@@ -31,9 +29,13 @@ class Notepad {
         view.add(new JMenuItem("Word Wrap"));
         
         mb.add(file); mb.add(edit); mb.add(view);
-        f.add(scrollPane, BorderLayout.CENTER);
         
-        f.setJMenuBar(mb);        
+        f.setJMenuBar(mb);
+        JTextArea textArea = new JTextArea();
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        f.add(scrollPane, BorderLayout.CENTER);
+
         f.setSize(800, 600);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
