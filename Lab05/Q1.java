@@ -10,8 +10,6 @@ class Notepad {
         JMenu file = new JMenu("File");
         JMenu edit = new JMenu("Edit");
         JMenu view = new JMenu("View");
-
-        
         
         file.add(new JMenuItem("New"));
         file.add(new JMenuItem("Open"));
