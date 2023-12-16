@@ -8,7 +8,7 @@ public class Q1 {
     public Q1() {
         JFrame frame = new JFrame("User Add Form");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600,600);
+        frame.setSize(400, 400);
         JLabel nameJLabel = new JLabel("Name: ");
         JTextField nameTextField = new JTextField(20);
         JLabel addJLabel = new JLabel("Address: ");

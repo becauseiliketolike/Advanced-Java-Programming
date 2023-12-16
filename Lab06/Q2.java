@@ -12,7 +12,7 @@ class Dashboard {
         jfd.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jfd.setLayout(new FlowLayout());
         jfd.add(new JTextArea("Login Successful"), BorderLayout.CENTER);
-        jfd.setSize(300, 300);
+        jfd.setSize(400, 400);
         jfd.setVisible(true);
     }
 }
@@ -27,7 +27,7 @@ public class Q2 implements ActionListener {
 
     public Q2() {
         jf = new JFrame("Login Form");
-        jf.setSize(300, 300);
+        jf.setSize(400, 400);
         jf.setLayout(new GridBagLayout());
         
         gbc = new GridBagConstraints();
