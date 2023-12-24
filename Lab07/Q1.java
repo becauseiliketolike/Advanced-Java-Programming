@@ -15,12 +15,12 @@ import javax.swing.*;
 
 class SignUpForm implements ActionListener {
     JFrame jf;
-    JLabel jlName, jlAddress, jlCountry, jlEmail, jlMarital, jlGender, jlTerms;
-    static JTextField jtfName, jtfAddress, jtfEmail, jtfMarital, jtfGender, jtfTerms;
+    JLabel jlName, jlAddress, jlCountry, jlEmail, jlMarital, jlGender;
+    static JTextField jtfName, jtfAddress, jtfEmail;
     static JComboBox<String> jcbCountry;
     static JCheckBox jcbTerms;
     static ButtonGroup bgStatus, bgGender;
-    JRadioButton jrbMale, jrbFemale, jcbMarried, jcbUnmarried, jcbSingle;
+    JRadioButton jrbMale, jrbFemale, jrbMarried, jrbUnmarried, jrbSingle;
     static JButton jbSubmit, jbClear;
     static JTextArea jtaSubmit;
     static int errorIndex;
@@ -69,15 +69,15 @@ class SignUpForm implements ActionListener {
         jlMarital = new JLabel("Marital Status: ");
         jf.add(jlMarital, gbc);
         gbc.gridx = 1;
-        jcbMarried = new JRadioButton("Married");
-        jcbUnmarried = new JRadioButton("Unmarried");
-        jcbSingle = new JRadioButton("Single");
+        jrbMarried = new JRadioButton("Married");
+        jrbUnmarried = new JRadioButton("Unmarried");
+        jrbSingle = new JRadioButton("Single");
         bgStatus = new ButtonGroup();
-        bgStatus.add(jcbMarried);
-        bgStatus.add(jcbUnmarried);
-        bgStatus.add(jcbSingle);
+        bgStatus.add(jrbMarried);
+        bgStatus.add(jrbUnmarried);
+        bgStatus.add(jrbSingle);
         JPanel jpStatus = new JPanel();
-        jpStatus.add(jcbMarried); jpStatus.add(jcbUnmarried); jpStatus.add(jcbSingle);
+        jpStatus.add(jrbMarried); jpStatus.add(jrbUnmarried); jpStatus.add(jrbSingle);
         jf.add(jpStatus, gbc);
 
         gbc.gridx = 0; gbc.gridy = 6;
@@ -93,7 +93,7 @@ class SignUpForm implements ActionListener {
         jpGender.add(jrbMale); jpGender.add(jrbFemale);
         jf.add(jpGender, gbc);
 
-        gbc.gridx = 0; gbc.gridy = 8;
+        gbc.gridx = 0; gbc.gridy = 7;
         gbc.gridwidth = 2;
         jcbTerms = new JCheckBox("Accept Terms and Policy");
         jcbTerms.addActionListener(this);
@@ -101,11 +101,11 @@ class SignUpForm implements ActionListener {
 
         jtaSubmit = new JTextArea();
         jtaSubmit.setBackground(null);
-        gbc.gridx = 0; gbc.gridy = 10;
+        gbc.gridx = 0; gbc.gridy = 9;
         gbc.gridwidth = 2;
         jf.add(jtaSubmit, gbc);
 
-        gbc.gridx = 0; gbc.gridy = 9;
+        gbc.gridx = 0; gbc.gridy = 8;
         jbSubmit = new JButton("Submit");
         jbSubmit.setEnabled(false);
         jbSubmit.addActionListener(this);
@@ -164,7 +164,7 @@ class SignUpForm implements ActionListener {
             if (!email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$"))
                 ErrorMessage(". Email format is invalid.\n");
                 
-            if (jcbCountry.getSelectedIndex() == 0) 
+            if (jcbCountry.getSelectedItem() == null) 
                 ErrorMessage(". Country not selected.\n");
                 
             if (bgStatus.getSelection() == null)
@@ -178,7 +178,6 @@ class SignUpForm implements ActionListener {
                 jtaSubmit.append("Form has been submitted successfully.");
                 ClearFields();
             }
-            
         } else if (e.getSource() == jbClear) {
             ClearFields();
         }
