@@ -15,12 +15,12 @@ import javax.swing.*;
 
 class SignUpForm implements ActionListener {
     JFrame jf;
-    static JLabel jlName, jlAddress, jlCountry, jlEmail, jlMarital, jlGender, jlTerms;
+    JLabel jlName, jlAddress, jlCountry, jlEmail, jlMarital, jlGender, jlTerms;
     static JTextField jtfName, jtfAddress, jtfEmail, jtfMarital, jtfGender, jtfTerms;
     static JComboBox<String> jcbCountry;
     static JCheckBox jcbTerms;
     static ButtonGroup bgStatus, bgGender;
-    static JRadioButton jrbMale, jrbFemale, jcbMarried, jcbUnmarried, jcbSingle;
+    JRadioButton jrbMale, jrbFemale, jcbMarried, jcbUnmarried, jcbSingle;
     static JButton jbSubmit, jbClear;
     static JTextArea jtaSubmit;
     static int errorIndex;
