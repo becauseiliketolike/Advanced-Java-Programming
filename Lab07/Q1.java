@@ -15,65 +15,173 @@ import javax.swing.*;
 
 class SignUpForm implements ActionListener {
     JFrame jf;
-    JLabel jlName, jlAddress, jlCountry, jlEmail, jlMarital, jlGender, jlTerms;
-    JTextField jtfName, jtfAddress, jtfEmail, jtfMarital, jtfGender, jtfTerms;
-    JComboBox jcbCountry;
-    JCheckBox jcbMarried, jcbUnmarried, jcbSingle, jcbAccept;
-    ButtonGroup bgStatus, bgGender;
-    JRadioButton jrbMale, jrbFemale;
-
+    static JLabel jlName, jlAddress, jlCountry, jlEmail, jlMarital, jlGender, jlTerms;
+    static JTextField jtfName, jtfAddress, jtfEmail, jtfMarital, jtfGender, jtfTerms;
+    static JComboBox<String> jcbCountry;
+    static JCheckBox jcbTerms;
+    static ButtonGroup bgStatus, bgGender;
+    static JRadioButton jrbMale, jrbFemale, jcbMarried, jcbUnmarried, jcbSingle;
+    static JButton jbSubmit, jbClear;
+    static JTextArea jtaSubmit;
+    static int errorIndex;
+    static boolean hasError;
+    
     public SignUpForm() {
         jf = new JFrame("Sign Up Form");
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jf.setSize(400, 400);
+        jf.setSize(500, 500);
         
         jf.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         
+        gbc.insets = new Insets(0, 10, 10, 0);
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.gridx = 0; gbc.gridy = 1;
         jlName = new JLabel("Name: ");
-        jtfName = new JTextField(20);
-        jtfName.addActionListener(this);
+        jf.add(jlName, gbc);
+        gbc.gridx = 1;
+        jtfName = new JTextField(15);
+        jf.add(jtfName, gbc);
         
+        gbc.gridx = 0; gbc.gridy = 2;
         jlAddress = new JLabel("Address: ");
-        jtfAddress = new JTextField(20);
-        jtfAddress.addActionListener(this);
+        jf.add(jlAddress, gbc);
+        gbc.gridx = 1;
+        jtfAddress = new JTextField(15);
+        jf.add(jtfAddress, gbc);
         
+        gbc.gridx = 0; gbc.gridy = 3;
         jlEmail = new JLabel("Email: ");
-        jtfEmail = new JTextField(20);
-        jlCountry = new JLabel("Country: ");
-        String[] country = {"USA", "UK", "Nepal"};
-        jcbCountry = new JComboBox(country);
-        jcbCountry.addActionListener(this);
+        jf.add(jlEmail, gbc);
+        gbc.gridx = 1;
+        jtfEmail = new JTextField(15);
+        jf.add(jtfEmail, gbc);
         
+        gbc.gridx = 0; gbc.gridy = 4;
+        jlCountry = new JLabel("Country: ");
+        jf.add(jlCountry, gbc);
+        gbc.gridx = 1;
+        String[] country = {null, "USA", "UK", "Nepal"};
+        jcbCountry = new JComboBox<>(country);
+        jf.add(jcbCountry, gbc);
+        
+        gbc.gridx = 0; gbc.gridy = 5;
         jlMarital = new JLabel("Marital Status: ");
-        jcbMarried = new JCheckBox("Married");
-        jcbMarried.addActionListener(this);
-        jcbUnmarried = new JCheckBox("Unmarried");
-        jcbUnmarried.addActionListener(this);
-        jcbSingle = new JCheckBox("Single");
-        jcbSingle.addActionListener(this);
+        jf.add(jlMarital, gbc);
+        gbc.gridx = 1;
+        jcbMarried = new JRadioButton("Married");
+        jcbUnmarried = new JRadioButton("Unmarried");
+        jcbSingle = new JRadioButton("Single");
         bgStatus = new ButtonGroup();
         bgStatus.add(jcbMarried);
         bgStatus.add(jcbUnmarried);
         bgStatus.add(jcbSingle);
+        JPanel jpStatus = new JPanel();
+        jpStatus.add(jcbMarried); jpStatus.add(jcbUnmarried); jpStatus.add(jcbSingle);
+        jf.add(jpStatus, gbc);
 
-        jlGender = new JLabel("Gender: ");      
+        gbc.gridx = 0; gbc.gridy = 6;
+        jlGender = new JLabel("Gender: "); 
+        jf.add(jlGender, gbc);
+        gbc.gridx = 1;
         jrbMale = new JRadioButton("Male");
-        jrbMale.addActionListener(this);
         jrbFemale = new JRadioButton("Female");
-        jrbFemale.addActionListener(this);
         bgGender = new ButtonGroup();
         bgGender.add(jrbMale);
         bgGender.add(jrbFemale);
+        JPanel jpGender = new JPanel();
+        jpGender.add(jrbMale); jpGender.add(jrbFemale);
+        jf.add(jpGender, gbc);
 
-        jlTerms = new JLabel("Terms and Policy: ");
-        jcbAccept = new JCheckBox();
+        gbc.gridx = 0; gbc.gridy = 8;
+        gbc.gridwidth = 2;
+        jcbTerms = new JCheckBox("Accept Terms and Policy");
+        jcbTerms.addActionListener(this);
+        jf.add(jcbTerms, gbc);
 
+        jtaSubmit = new JTextArea();
+        jtaSubmit.setBackground(null);
+        gbc.gridx = 0; gbc.gridy = 10;
+        gbc.gridwidth = 2;
+        jf.add(jtaSubmit, gbc);
+
+        gbc.gridx = 0; gbc.gridy = 9;
+        jbSubmit = new JButton("Submit");
+        jbSubmit.setEnabled(false);
+        jbSubmit.addActionListener(this);
+        jf.add(jbSubmit, gbc);
+        gbc.anchor = GridBagConstraints.EAST;
+        gbc.gridx = 1;
+        jbClear = new JButton("Clear");
+        jbClear.addActionListener(this);
+        jf.add(jbClear, gbc);
+        
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.gridx = 0; gbc.gridy = 0;
+        gbc.insets = new Insets(0, 0, 15, 0);
+        jf.add(new JLabel("SIGN UP FORM"), gbc);
+        
         jf.setVisible(true);
     }
 
+    public static void ErrorMessage(String message) {
+        hasError = true;
+        jtaSubmit.append((errorIndex++) + message);
+    }
+
+    public static void ClearFields() {
+        jbSubmit.setEnabled(false);
+        jtfName.setText(null);
+        jtfAddress.setText(null);
+        jtfEmail.setText(null);
+        jcbCountry.setSelectedIndex(0);
+        bgStatus.clearSelection();
+        bgGender.clearSelection();
+        jcbTerms.setSelected(false);
+    }
+  
     public void actionPerformed(ActionEvent e) {
-        //
+        if (e.getSource() == jcbTerms) {    
+            if (jcbTerms.isSelected()) 
+                jbSubmit.setEnabled(true);
+            else 
+                jbSubmit.setEnabled(false);
+        } else if (e.getSource() == jbSubmit) {
+            errorIndex = 1;
+            hasError = false;
+            jtaSubmit.setText(null);
+            jtaSubmit.setForeground(new Color(203, 53, 53));
+            String name = jtfName.getText();
+            String address = jtfAddress.getText();
+            String email = jtfEmail.getText();
+
+            if (name.isEmpty() || name.length() < 20)
+                ErrorMessage(". Name should not be empty and greater than 20 chatacters.\n");
+
+            if (address.isEmpty())
+                ErrorMessage(". Address should not be empty.\n");
+            
+            if (!email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$"))
+                ErrorMessage(". Email format is invalid.\n");
+                
+            if (jcbCountry.getSelectedIndex() == 0) 
+                ErrorMessage(". Country not selected.\n");
+                
+            if (bgStatus.getSelection() == null)
+                ErrorMessage(". Please choose Marital status.\n");
+            
+            if (bgGender.getSelection() == null)
+                ErrorMessage(". Please choose gender.\n");
+            
+            if (!hasError) {
+                jtaSubmit.setForeground(new Color(34, 139, 34));
+                jtaSubmit.append("Form has been submitted successfully.");
+                ClearFields();
+            }
+            
+        } else if (e.getSource() == jbClear) {
+            ClearFields();
+        }
     }
 }
 
