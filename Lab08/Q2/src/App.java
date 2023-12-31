@@ -16,6 +16,8 @@ public class App {
             String sql = "CREATE TABLE STUDENT (Id INT NOT NULL, Name VARCHAR(255), Class VARCHAR(255), RollNo INT, PRIMARY KEY (Id))";
             statement.executeUpdate(sql);
             System.out.println("Table created successfully.");
+            statement.close();
+            connection.close();
         } catch (Exception e) {
             System.out.println(e);
         }

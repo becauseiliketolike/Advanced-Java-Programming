@@ -17,6 +17,7 @@ public class App {
             String sql = "CREATE DATABASE NGT";
             statement.executeUpdate(sql);
             System.out.println("Database created successfully.");
+            statement.close();
             connection.close();
         } catch (Exception e) {
             System.out.println(e);
