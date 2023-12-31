@@ -32,7 +32,7 @@ public class App {
             //     String name = rs.getString("Name");
             //     String classL = rs.getString("Class");
             //     int rollNo = rs.getInt("RollNo");
-            //     System.out.println("| Id: " + id + "\t| First: " + name + "\t| Last: " + classL + "\t| Age: " + rollNo + "\t|");
+            //     System.out.println("| Id: " + id + "\t| Name: " + name + "\t| Class: " + classL + "\t| Roll no: " + rollNo + "\t|");
             // }
             // rs.close();
 
