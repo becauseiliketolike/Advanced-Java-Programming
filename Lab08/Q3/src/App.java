@@ -15,7 +15,7 @@ public class App {
             Connection connection = DriverManager.getConnection(url, username, password);
             Statement statement = connection.createStatement();
             
-            // CREATE
+            // a. CREATE
             // String sql = "INSERT INTO student (Id, Name, Class, RollNo) VALUES (1, 'Jude', 'BCA', 5)";
             // statement.executeUpdate(sql);
             // sql = "INSERT INTO student VALUES (2, 'NGT', 'CSIT', 20)";
@@ -24,7 +24,7 @@ public class App {
             // statement.executeUpdate(sql);
             // System.out.println("Data inserted successfully.");
             
-            // READ
+            // b. READ
             // String sql = "SELECT * FROM student";
             // ResultSet rs = statement.executeQuery(sql);
             // while (rs.next()) {
@@ -36,12 +36,12 @@ public class App {
             // }
             // rs.close();
 
-            // UPDATE
+            // c. UPDATE
             // String sql = "UPDATE student SET Name = 'Zidane' WHERE Id = 1";
             // statement.executeUpdate(sql);
             // System.out.println("Table Updated");
 
-            // DELETE
+            // d. DELETE
             // String sql = "DELETE FROM student WHERE Id = 2";
             // statement.executeUpdate(sql);
             // System.out.println("Data deleted successfully.");
