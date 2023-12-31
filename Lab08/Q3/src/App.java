@@ -46,8 +46,8 @@ public class App {
             // statement.executeUpdate(sql);
             // System.out.println("Data deleted successfully.");
             
-            connection.close();
             statement.close();
+            connection.close();
         } catch (Exception e) {
             System.out.println(e);
         }
