@@ -1,0 +1,1 @@
+// Write a sevlet named Hello. when path /hello is accessed from browsers, is hould display,: "Hello from server" in the browser.
